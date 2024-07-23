@@ -273,7 +273,7 @@ def tic_tac_toe_computer(name):
                         computer_row = 1
                         computer_col = 3
                     else:
-                        computer_row, computer_col = index_loo(board)
+                        computer_row, computer_col = index_loo(board,2,2)
                 elif board[2][1] == choice_symbol:
                     if not is_occupied(board,1,1):
                         computer_row =1
@@ -282,7 +282,7 @@ def tic_tac_toe_computer(name):
                         computer_row = 1
                         computer_col = 3
                     else:
-                        computer_row, computer_col = index_loo(board)
+                        computer_row, computer_col = index_loo(board,2,2)
                 elif board[3][2] == choice_symbol:
                     if not is_occupied(board,3,1):
                         computer_row =1
@@ -291,7 +291,7 @@ def tic_tac_toe_computer(name):
                         computer_row = 1
                         computer_col = 3
                     else:
-                        computer_row, computer_col = index_loo(board)
+                        computer_row, computer_col = index_loo(board,2,2)
                 elif board[2][3] == choice_symbol:
                     if not is_occupied(board,1,3):
                         computer_row =1
@@ -300,9 +300,9 @@ def tic_tac_toe_computer(name):
                         computer_row = 1
                         computer_col = 3
                     else:
-                        computer_row, computer_col = index_loo(board)
+                        computer_row, computer_col = index_loo(board,2,2)
                 else:
-                    computer_row, computer_col = index_loo(board)
+                    computer_row, computer_col = index_loo(board,2,2)
 
                 board[computer_row][computer_col] = computer
             print_board(board)
