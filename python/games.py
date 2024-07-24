@@ -104,7 +104,7 @@ import random
 
 # tic_tac_toe for 1 player
 def tic_tac_toe_computer(name):
-    speakandprint(f"Welcom {name} to the Tic Tac Toe game.")
+    speakandprint(f"Welcome {name} to the Tic Tac Toe game.")
     speakandprint("Its the simple 3X3 grid game .")
     speakandprint("You have to enter the row and column number to place your mark.")
     speakandprint("The player who gets 3 marks in a row, column or diagonal wins the game.")
@@ -177,63 +177,86 @@ def tic_tac_toe_computer(name):
     def index_loo(board,computer_row,computer_col):
         turn = 'c'
         change = 0
+        chance = 1
         while turn == 'c':
             if not is_occupied(board, computer_row, computer_col):
+                if not is_occupied(board,2,2) and chance == 1:
+                    computer_row = 2
+                    computer_col = 2
+                    change = 1
+                    chance = 0
                 for i in range(1,4):
                     if board[i][1] == board[i][2] and board[i][1] == choice_symbol and change != 1 and board[i][3] != computer:
                         computer_row = i
                         computer_col = 3
                         change = 1
                         break
-                    elif board[i][1] == board[i][3] and board[i][1] == choice_symbol and change != 1 and board[i][3] != computer:
+                    elif board[i][1] == board[i][3] and board[i][1] == choice_symbol and change != 1 and board[i][2] != computer:
                         computer_row = i
                         computer_col = 2
                         change = 1
                         break
-                    elif board[i][2] == board[i][3] and board[i][2] == choice_symbol and change != 1 and board[i][3] != computer:
+                    elif board[i][2] == board[i][3] and board[i][2] == choice_symbol and change != 1 and board[i][1] != computer:
                         computer_row = i
                         computer_col = 1
                         change = 1
                         break
-                    if board[1][i] == board[2][i] and board[1][i] == choice_symbol and change != 1 and board[i][3] != computer:
+                    if board[1][i] == board[2][i] and board[1][i] == choice_symbol and change != 1 and board[3][i] != computer:
                         computer_row = 3
                         computer_col = i
                         change = 1
                         break
-                    elif board[1][i] == board[3][i] and board[1][i] == choice_symbol and change != 1 and board[i][3] != computer:
+                    elif board[1][i] == board[3][i] and board[1][i] == choice_symbol and change != 1 and board[2][i] != computer:
                         computer_row = 2
                         computer_col = i
                         change = 1
                         break
-                    elif board[2][i] == board[3][i] and board[2][i] == choice_symbol and change != 1 and board[i][3] != computer:
+                    elif board[2][i] == board[3][i] and board[2][i] == choice_symbol and change != 1 and board[1][i] != computer:
                         computer_row = 1
                         computer_col = i
                         change = 1
                         break
-                if board[3][3] == board[1][1] and board[1][1] == choice_symbol and change != 1 and board[i][3] != computer:
+                if board[3][3] == board[1][1] and board[1][1] == choice_symbol and change != 1 and board[2][2] != computer:
                     computer_row = 2
                     computer_col = 2
                     change = 1
-                elif board[1][1] == board[2][2] and board[1][1] == choice_symbol and change != 1 and board[i][3] != computer:
+                elif board[1][1] == board[2][2] and board[1][1] == choice_symbol and change != 1 and board[3][3] != computer:
                     computer_row = 3
                     computer_col = 3
                     change = 1
-                elif board[3][3] == board[2][2] and board[3][3] == choice_symbol and change != 1 and board[i][3] != computer:
+                elif board[3][3] == board[2][2] and board[3][3] == choice_symbol and change != 1 and board[2][2] != computer:
                     computer_row = 2
                     computer_col = 2
                     change = 1
-                if board[1][3] == board[3][1] and board[1][3] == choice_symbol and change != 1 and board[i][3] != computer:
+                if board[1][3] == board[3][1] and board[1][3] == choice_symbol and change != 1 and board[2][2] != computer:
                     computer_row = 2
                     computer_col = 2
                     change = 1
-                elif board[3][1] == board[2][2] and board[3][1] == choice_symbol and change != 1 and board[i][3] != computer:
+                elif board[3][1] == board[2][2] and board[3][1] == choice_symbol and change != 1 and board[1][3] != computer:
                     computer_row = 1
                     computer_col = 3
                     change = 1
-                elif board[3][1] == board[1][3] and board[3][1] == choice_symbol and change != 1 and board[i][3] != computer:
-                    computer_row = 2
-                    computer_col = 2
+                elif board[2][2] == board[1][3] and board[3][1] == choice_symbol and change != 1 and board[3][1] != computer:
+                    computer_row = 3
+                    computer_col = 1
                     change = 1
+                if is_occupied(board,2,2) and change != 1:
+                    if not is_occupied(board,1,1):
+                        computer_row = 1
+                        computer_col = 1
+                        change = 1
+                    elif not is_occupied(board,1,3):
+                        computer_row = 1
+                        computer_col = 3
+                        change = 1
+                    elif not is_occupied(board,3,1):
+                        computer_row = 3
+                        computer_col = 1
+                        change = 1
+                    elif not is_occupied(board,3,3):
+                        computer_row = 3
+                        computer_col = 3
+                        change = 1
                 if not is_occupied(board, computer_row, computer_col):
                     print(computer_row, computer_col)
                     return computer_row, computer_col
@@ -273,7 +296,7 @@ def tic_tac_toe_computer(name):
                         computer_row = 1
                         computer_col = 3
                     else:
-                        computer_row, computer_col = index_loo(board,2,2)
+                        computer_row, computer_col = index_loo(board)
                 elif board[2][1] == choice_symbol:
                     if not is_occupied(board,1,1):
                         computer_row =1
@@ -282,7 +305,7 @@ def tic_tac_toe_computer(name):
                         computer_row = 1
                         computer_col = 3
                     else:
-                        computer_row, computer_col = index_loo(board,2,2)
+                        computer_row, computer_col = index_loo(board)
                 elif board[3][2] == choice_symbol:
                     if not is_occupied(board,3,1):
                         computer_row =1
@@ -291,7 +314,7 @@ def tic_tac_toe_computer(name):
                         computer_row = 1
                         computer_col = 3
                     else:
-                        computer_row, computer_col = index_loo(board,2,2)
+                        computer_row, computer_col = index_loo(board)
                 elif board[2][3] == choice_symbol:
                     if not is_occupied(board,1,3):
                         computer_row =1
@@ -300,9 +323,9 @@ def tic_tac_toe_computer(name):
                         computer_row = 1
                         computer_col = 3
                     else:
-                        computer_row, computer_col = index_loo(board,2,2)
+                        computer_row, computer_col = index_loo(board)
                 else:
-                    computer_row, computer_col = index_loo(board,2,2)
+                    computer_row, computer_col = index_loo(board)
 
                 board[computer_row][computer_col] = computer
             print_board(board)
