@@ -508,3 +508,5 @@ while True:
         speakandprint("Thank you for playing. Have a great day")
         exit()
 
+# save user data in a databse for future use, we will keep a system of money every user will get 1000 rs and to play a game he/she had to pay 100 rs, for every win 500rs will add in his account 
+# if his/her balance will come to 0 he had to recharge his account via admin's account
