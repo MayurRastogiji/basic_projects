@@ -84,6 +84,42 @@ def rockpaperscissors(name, n):
     else:
         speakandprint(f"{name} wins by {player_score - computer_score}")
 
+
+def SnakeWaterGun(name, n):
+    speakandprint(f"Hello {name} to our \n SNAKE, WATER and GUN game.")
+    output = [
+        [0,1,2],
+        [2,0,1],
+        [1,2,0]
+    ]
+    n = int(input("how many chances"))
+    a =1
+    player_score = 0
+    computer_score = 0
+    while a <= n:
+        user_input = int(input("enter 0 for SNAKE\nenter 1 for WATER\nenter 2 for GUN\n"))
+        computer_input = random.randint(0,2)
+        if output[user_input][computer_input] == 0:
+            speakandprint("Match Draw")
+        elif output[user_input][computer_input] == 1:
+            player_score += 1
+            speakandprint(f"{name} wins")
+        else:
+            computer_score += 1
+            speakandprint("computer wins")
+        a+=1
+    speakandprint(f"score of player {name} : {player_score}")
+    speakandprint(f"score of computer : {computer_score}")
+    if (player_score < computer_score):
+        speakandprint(f"computer wins by {computer_score - player_score}")
+    elif(player_score == computer_score):
+        speakandprint("It's a draw")
+    else:
+        speakandprint(f"{name} wins by {player_score - computer_score}")
+
+
+
+
 # TIC TAC TOE GAME
 """
 There are two ways to playa game of Tic Tac Toe.
@@ -487,7 +523,7 @@ speakandprint(f"welcome {name} to the world of games. We have many games for you
 speakandprint("choose the game you want to play")
 choice = 0
 while True:
-    choice= input(speakandprint("1. Quiz Game \n2. Rock Paper Scissors \n3. Tic Tac Toe \n4. Exit"))
+    choice= input(speakandprint("1. Quiz Game \n2. Rock Paper Scissors \n3. Tic Tac Toe \n4. Snake Water Gun \n5. Exit"))
     speakandprint(f"You choice is : {choice}" )
     if choice == '1':
         speakandprint("enter number of attempts : \n")
@@ -505,6 +541,10 @@ while True:
             player2 = input(speakandprint("enter the name of player 2 : "))
             tic_tac_toe_person(name,player2)
     elif choice == '4':
+        speakandprint("enter number of attempts : \n")
+        attempt = int(input())
+        SnakeWaterGun(name,attempt)
+    elif choice == '5':
         speakandprint("Thank you for playing. Have a great day")
         exit()
 
