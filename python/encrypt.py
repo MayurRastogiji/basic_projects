@@ -186,10 +186,10 @@ def check_decimal(num):
     else:
         return False
     
-if(check("123.15")):
-    print("Equal")
-else:
-    print("not equal")
+# if(check("123.15")):
+#     print("Equal")
+# else:
+#     print("not equal")
 
 skip = 0
 while True:
