@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Static Files</title>
+    <style>
+        .content-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .content-item {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Click the button to view static content</h1>
+
+    <button id="viewStaticButton">View Static Files</button>
+
+    <div class="content-container" id="contentContainer"></div>
+
+    <script>
+        document.getElementById('viewStaticButton').addEventListener('click', function() {
+            // List static files (e.g., images) and display them dynamically
+            const contentContainer = document.getElementById('contentContainer');
+            contentContainer.innerHTML = '';  // Clear previous content
+
+            // Example: Add a few static files (you should dynamically get them from your server)
+            const staticFiles = [
+                'BILLO ｜｜ J STAR ｜｜ Full Official Video ｜｜ J STAR Productions.mp4'
+            ];
+
+            staticFiles.forEach(function(file) {
+                const img = document.createElement('img');
+                img.src = `/view-static/${file}`;  // This URL fetches the static file from Flask
+                img.classList.add('content-item');
+                contentContainer.appendChild(img);
+            });
+        });
+    </script>
+</body>
+</html>
